@@ -2,3 +2,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* CUSTOM COLORS */
+:root {
+    --primary: theme(colors.primary.DEFAULT);
+    --secondary: theme(colors.secondary.DEFAULT);
+    --third: theme(colors.third.DEFAULT);
+    --fourth: theme(colors.fourth.DEFAULT);
+    --light-back: #eaeaea;
+    --text-dark: theme(colors.dark);
+    --text-white: theme(colors.white);
+  }
