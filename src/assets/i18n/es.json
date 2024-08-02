@@ -1,3 +1,20 @@
 {
-    "FREE_SHIPPING_BANNER": "Envíos gratis a Madrid capital, resto de España consultar tarifas."
+    "FREE_SHIPPING_BANNER": "Envíos gratis a Madrid capital, resto de España consultar tarifas.",
+    "SHOP": "Tienda",
+    "BLOG": "Blog",
+    "ABOUT_US": "Sobre nosotros",
+    "CONTACT": "Contacto",
+    "MY_CART": "Mi cesta de compras",
+    "SIZE": "Talla",
+    "UNIT": "unidad",
+    "UNITS": "unidades",
+    "COLOR": "Color",
+    "SEE_CART": "Ver cesta",
+    "EMPTY_CART": "Tu cesta está'; vacía.",
+    "MY_FAVOURITES": "Mi lista de favoritos",
+    "LOGIN": "Iniciar sesión",
+    "MY_ACCOUNT": "Mi cuenta",
+    "ADMIN": "Administración",
+    "LOGOUT": "Salir",
+    "WHAT_YOU_SEARCH": "¿Qué estás buscando?"
 }

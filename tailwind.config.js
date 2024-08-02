@@ -23,7 +23,7 @@ module.exports = {
         DEFAULT: '#74A687',
       },
       white: '#fff',
-      dark: '#989898',
+      dark: '#7d7676',
     }
   },
   plugins: [],

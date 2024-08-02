@@ -7,15 +7,15 @@ import { environment } from "../../environments/environment";
     providedIn: 'root'
 })
 export class InitConfig {
-    private CompanyServ = inject(CompanyService);
-    private GlobalServ = inject(GlobalService);
+    private companyService = inject(CompanyService);
+    private globalService = inject(GlobalService);
 
     load() {
         return new Promise<void>((resolve, reject) => {
-            this.CompanyServ.getCompanyByCode(environment.companyCode).subscribe({
+            this.companyService.getCompanyByCode(environment.companyCode).subscribe({
                 next: (res) => {
-                    this.GlobalServ.setCompanyId(res.id);
-                    this.GlobalServ.setCompany(res);
+                    this.globalService.setCompanyId(res.id);
+                    this.globalService.setCompany(res);
                     resolve();
                 },
                 error: (error: any) => {

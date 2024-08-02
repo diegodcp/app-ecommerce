@@ -5,13 +5,53 @@
 
 /* CUSTOM COLORS */
 :root {
-    --primary: theme(colors.primary.DEFAULT);
-    --secondary: theme(colors.secondary.DEFAULT);
-    --third: theme(colors.third.DEFAULT);
-    --fourth: theme(colors.fourth.DEFAULT);
-    --light-back: #eaeaea;
-    --text-dark: theme(colors.dark);
-    --text-white: theme(colors.white);
-  }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+  --primary: theme(colors.primary.DEFAULT);
+  --secondary: theme(colors.secondary.DEFAULT);
+  --third: theme(colors.third.DEFAULT);
+  --fourth: theme(colors.fourth.DEFAULT);
+  --light-back: #eaeaea;
+  --text-dark: theme(colors.dark);
+  --text-white: theme(colors.white);
+}
+
+html, body { 
+  height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+  color: var(--text-dark);
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+
+/* MAT-SELECT */
+.header .noSelectArrow .mat-mdc-select-arrow-wrapper {
+  display: none;
+  border: none;
+}
+.header .mdc-text-field--filled:not(.mdc-text-field--disabled){
+  background-color: transparent;
+}
+.header .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before{
+  display: none;
+}
+.header .mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-line-ripple::after {
+  display: none;
+}
+.header .mat-mdc-form-field-subscript-wrapper {
+  display: none;
+}
+.header .mdc-text-field--outlined .mat-mdc-form-field-infix, .header .mdc-text-field--no-label .mat-mdc-form-field-infix{
+  padding: 0!important;
+}
+
+/* MAT-BADGE */
+.mat-badge-content, .mat-badge-medium .mat-badge-content {
+  background: var(--primary);
+}

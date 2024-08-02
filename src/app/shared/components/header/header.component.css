@@ -1,0 +1,27 @@
+.head-icon:hover{
+    color: #adadad;
+}
+.cart-img {
+    width: 3.5em;
+    height: 3.5em;
+    object-fit: cover;
+    background: var(--light-back);
+}
+.search-div{
+    border: 1px solid var(--text-white);
+    border-radius: 4px;
+}
+.search-div input{
+    border: unset;
+    background: unset;
+}
+.icon-search {
+    margin: auto;
+}
+input::placeholder {
+    color: white;
+    opacity: 1;
+}
+textarea:focus, input:focus{
+    outline: none;
+}

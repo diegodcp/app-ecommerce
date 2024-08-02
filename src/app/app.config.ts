@@ -9,10 +9,14 @@ import { InitConfig } from './config/init.config';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { translateLoadFactory } from './shared/utils/translate';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-
+import { LanguageService } from './services/language.service';
 
 export function loadInitialConfig(initConfig: InitConfig) {
   return () => initConfig.load();
+}
+
+export function initializeLanguage(languageService: LanguageService) {
+  return () => languageService.initializeLanguage();
 }
 
 export const appConfig: ApplicationConfig = {
@@ -26,15 +30,21 @@ export const appConfig: ApplicationConfig = {
       deps: [InitConfig],
       multi: true
     },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeLanguage,
+      deps: [LanguageService],
+      multi: true
+    },
     importProvidersFrom(
       TranslateModule.forRoot({
-        defaultLanguage: 'es',
         loader: {
           provide: TranslateLoader,
           useFactory: translateLoadFactory,
           deps: [HttpClient]
         }
       })
-    ), provideAnimationsAsync()
+    ),
+    provideAnimationsAsync()
   ]
 };

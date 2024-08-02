@@ -1,11 +1,11 @@
-<div class="flex w-full justify-center bg-primary text-white">
-    <p class="w-full py-1 px-2 text-center">{{'FREE_SHIPPING_BANNER' | translate}}</p>
-    <mat-form-field class="!w-14">
-      <mat-select [(value)]="selectedLanguage" (selectionChange)="changeLanguage()">
+<div class="header flex w-full justify-center bg-primary text-white">
+    <p class="w-full pt-1 px-2 text-center">{{'FREE_SHIPPING_BANNER' | translate}}</p>
+    <mat-form-field class="!w-14 h-8 noSelectArrow">
+      <mat-select [(value)]="selectedLanguage" (selectionChange)="changeLanguage()" disableRipple hideSingleSelectionIndicator>
         <mat-select-trigger>
-          <img src="{{getLanguage(selectedLanguage).img}}" alt="{{getLanguage(selectedLanguage).name}}">
+          <img src="{{getLocale(selectedLanguage)?.img}}" alt="{{getLocale(selectedLanguage)?.name}}">
         </mat-select-trigger>
-        @for (locale of locales; track locale.value) {
+        @for(locale of locales; track locale.value) {
         <mat-option [value]="locale.value">
           <img src="{{locale.img}}" alt="{{locale.name}}">
         </mat-option>
@@ -16,14 +16,101 @@
 <div class="flex flex-row flex-wrap justify-between items-center">
     
     <div class="hidden md:flex flex-row w-4/12 justify-between px-12">
-      <a routerLink="/products"><span>Shop</span></a>
-      <a routerLink="/" fragment="blog"><span>Blog</span></a>
-      <a routerLink="/" fragment="aboutus"><span>About us</span></a>
-      <a routerLink="/contact"><span>Contacto</span></a>
+      <a routerLink="/products"><span>{{'SHOP' | translate}}</span></a>
+      <a routerLink="/" fragment="blog"><span>{{'BLOG' | translate}}</span></a>
+      <a routerLink="/" fragment="aboutus"><span>{{'ABOUT_US' | translate}}</span></a>
+      <a routerLink="/contact"><span>{{'CONTACT' | translate}}</span></a>
     </div>
   
     <div class="flex w-4/12 justify-center py-2 pl-4 md:pl-0" routerLink="/">
-      <img width="168" height="48" ngSrc="{{companyImg?.name}}" placeholder alt="{{company?.name}}" class="logo h-24 w-auto cursor-pointer" priority >
+      <img width="168" height="112" ngSrc="{{companyImg?.name}}" placeholder alt="{{company?.name}}" class="logo h-24 w-auto cursor-pointer" priority >
     </div>
   
+    <div class="flex w-4/12 pr-1 md:pr-12 justify-end z-10">
+      <div class="w-auto cursor-pointer text-center py-4 my-2 mx-3" >
+        <mat-icon #toggleButton (click)="toggleCart()" [matBadge]="cartListItem.length" class="head-icon text-20" title="{{'MY_CART' | translate}}" aria-hidden="false">local_mall</mat-icon>
+        <div #menu class="relative">
+          @if(showDropdownCart) {
+          <div class="w-60 -right-20 absolute z-10 py-1 bg-white rounded-md shadow">
+              @for(cartItem of cartListItem; track cartItem.id) {
+              <a class="" routerLink="/cart">
+                <div class="flex justify-between py-1 border-b">
+                  <div class="w-3/12 flex items-center justify-center">
+                    <img width="50" height="50" src="{{imgUrl}}{{cartItem.productVariation.images[0].name}}" alt="{{cartItem.productVariation.images[0].altText}}" class="cart-img" loading="lazy">
+                  </div>
+                  <div class="w-9/12 pl-2 text-xs text-left flex flex-col">
+                      <strong>{{cartItem.productVariation.product.name}}</strong>
+                      <label for="quantity">{{cartItem.quantity}} {{(cartItem.quantity == 1) ? "{{'UNIT' | translate}}" : "{{'UNITS' | translate}}"}}</label>
+                      <label for="unit-price">{{ (cartItem.productVariation.unitPrice * cartItem.quantity) | currency:'EUR'}}</label>
+                      @if(cartItem.productVariation.size) {
+                      <label for="size" class="text-slate-400">{{'SIZE' | translate}}: {{ cartItem.productVariation.size.name }} </label>
+                      }
+                      @if(cartItem.productVariation.color) {
+                      <label for="color" class="text-slate-400">{{'COLOR' | translate}}: {{ cartItem.productVariation.color.name }}</label>
+                      }
+                  </div>
+                </div>
+              </a>
+              }
+              @if(cartListItem.length > 0) {
+              <div class="w-4/5 p-2 m-auto border-0">
+                <button mat-raised-button routerLink="/cart" class="btn-cart text-center" color="primary">{{'SEE_CART' | translate}}</button>
+              </div>
+              }
+              @if(cartListItem.length <= 0) {
+              <div class="w-4/5 p-2 m-auto border-0">{{'EMPTY_CART' | translate}}</div>
+              }
+          </div>
+          }
+        </div>
+      </div>
+
+      <div class="cursor-pointer text-center w-auto py-4 my-2 mx-3" routerLink="/favourites">
+        <mat-icon routerLink="/favourites" [matBadge]="favouritesProducts.length" title="{{'MY_FAVOURITES' | translate}}" class="head-icon text-20" aria-hidden="false">favorite_border</mat-icon>
+      </div>
+
+      @if(isLogged) {
+      <div class="cursor-pointer text-center w-auto py-4 my-2 mx-3">
+        <mat-icon #toggleButtonAccount (click)="toggleAccount()" class="head-icon text-20" aria-hidden="false">person</mat-icon>
+        <div #menuAccount class="relative">
+          @if(showDropdownAccount) {
+          <div class="w-60 -right-1 absolute flex flex-col z-10 p-1 
+          bg-white border border-1 border-neutral-400 rounded-md divide-y divide-slate-300">
+            @if(!isLogged) {
+            <a class="w-full py-1 text-left" routerLink="/login"><i class="fa fa-user" aria-hidden="true" title="Login"></i> {{'LOGIN' | translate}}</a>
+            }
+            @if(isLogged) {
+            <a class="w-full py-1 text-left" routerLink="/profile"><i class="fa fa-user-circle" aria-hidden="true" title="Mi cuenta"></i> {{'MY_ACCOUNT' | translate}}</a>
+            }
+            @if(isAdmin) {
+            <a class="w-full py-1 text-left" routerLink="/admin"><i class="fa fa-cogs" aria-hidden="true" title="Administración"></i> {{'ADMIN' | translate}}</a>
+            }
+            @if(isLogged) {
+            <a class="w-full py-1 text-right" (click)="onLogout()"><i class="fa fa-sign-out" aria-hidden="true" title="Salir"></i> {{'LOGOUT' | translate}}</a>
+            }
+          </div>
+          }
+        </div>
+      </div>
+      }
+      @if(!isLogged) {
+      <div class="flex flex-col ml-3 self-center cursor-pointer">
+        <a routerLink="/login" title="Login" class="head-icon">{{'LOGIN' | translate}}</a> 
+      </div>
+      }
+    </div>
+
+</div>
+
+<div class="flex flex-row flex-wrap justify-between items-center">
+  <div class="flex w-full p-2 items-center justify-around order-last m-auto bg-primary">
+    <div class="md:hidden flex flex-col items-center !text-white" (click)="toggleRightSidenav()">
+      <mat-icon class="head-icon">menu</mat-icon>
+      <span class="text-xs">Menu</span>
+    </div>
+    <div class="search-div flex flex-row w-9/12 md:w-2/5 text-white justify-center py-2">
+      <mat-icon (click)="searchItem()" class="icon-search cursor-pointer placeholder:text-white head-icon w-2/12 md:w-1/12">search</mat-icon>
+      <input type="text" class="m-auto form-control w-10/12 md:w-11/12" (keyup.enter)="searchItem()" [(ngModel)]="searchword" placeholder=" {{'WHAT_YOU_SEARCH' | translate}}"/>
+    </div>
+  </div>
 </div>

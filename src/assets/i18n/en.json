@@ -1,3 +1,20 @@
 {
-    "FREE_SHIPPING_BANNER": "Free shipping to Madrid capital, rest of Spain consult rates."
+    "FREE_SHIPPING_BANNER": "Free shipping to Madrid capital, rest of Spain consult rates.",
+    "SHOP": "Shop",
+    "BLOG": "Blog",
+    "ABOUT_US": "About us",
+    "CONTACT": "Contact",
+    "MY_CART": "My cart",
+    "SIZE": "Size",
+    "UNIT": "unit",
+    "UNITS": "units",
+    "COLOR": "Color",
+    "SEE_CART": "See cart",
+    "EMPTY_CART": "You cart is empty.",
+    "MY_FAVOURITES": "My favourite list",
+    "LOGIN": "Login",
+    "MY_ACCOUNT": "Account",
+    "ADMIN": "Admini",
+    "LOGOUT": "Logout",
+    "WHAT_YOU_SEARCH": "Search"
 }
