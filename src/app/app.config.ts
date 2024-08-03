@@ -10,6 +10,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { translateLoadFactory } from './shared/utils/translate';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { LanguageService } from './services/language.service';
+import { SidenavService } from './services/sidenav.service';
 
 export function loadInitialConfig(initConfig: InitConfig) {
   return () => initConfig.load();
@@ -45,6 +46,7 @@ export const appConfig: ApplicationConfig = {
         }
       })
     ),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    SidenavService
   ]
 };

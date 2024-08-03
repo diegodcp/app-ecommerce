@@ -1,0 +1,51 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav [mode]="'over'" [opened]="false" [attr.role]="'navigation'" fixedInViewport class="sidenav w-3/5">
+        <div class="flex justify-between">
+            <img src="{{imgBaseUrl}}{{companyLogo.name}}" alt="ByDay" class="m-auto w-12" loading="lazy">
+            <mat-icon (click)="sidenav.close()" class="menu-icon text-slate-800 mt-2 mr-2">close</mat-icon>
+        </div>
+        <mat-nav-list>
+            <mat-list-item class="!h-8" routerLink="/products" (click)="sidenav.close()">
+                <span>{{'SHOP' | translate}}</span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item class="!h-8" routerLink="" (click)="sidenav.close()">
+                <span>{{'BLOG' | translate}}</span>
+                </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item class="!h-8" routerLink="/" fragment="aboutus" (click)="sidenav.close()">
+                <span>{{'ABOUT_US' | translate}}</span>
+                </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item class="!h-8" routerLink="/contact" (click)="sidenav.close()">
+                <span>{{'CONTACT' | translate}}</span>
+                </mat-list-item>
+            <mat-list-item class="!h-8" class="mt-12">
+                </mat-list-item>
+            <mat-divider></mat-divider>
+            @if(!isLogged) {
+            <mat-list-item routerLink="/login" (click)="sidenav.close()" class="[&>span>span]:flex">
+                <mat-icon>person</mat-icon>
+                <span class="text-sm">{{'LOGIN' | translate}} | {{'REGISTER' | translate}}</span>
+            </mat-list-item>
+            }
+            @if(isLogged) {
+            <mat-list-item routerLink="/profile" (click)="sidenav.close()" class="[&>span>span]:flex">
+                <mat-icon>person</mat-icon>
+                <span>{{'PROFILE' | translate}}</span>
+            </mat-list-item>
+            }
+            <mat-divider></mat-divider>
+            <mat-list-item (click)="sidenav.close()" class="[&>span]:flex [&>span]:justify-center">
+                <!-- TOOD: change for company link (google review) -->
+                  
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <ng-content></ng-content>
+    </mat-sidenav-content>
+    
+</mat-sidenav-container>

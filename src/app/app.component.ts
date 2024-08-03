@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/components/header/header.component';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { SidenavComponent } from './shared/components/sidenav/sidenav.component';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +9,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
   imports: [
     RouterOutlet,
     HeaderComponent,
-    MatSidenavModule
+    SidenavComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'app-ecommerce';
+
 }

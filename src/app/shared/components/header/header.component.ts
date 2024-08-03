@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
   private translateService = inject(TranslateService);
   private storageService = inject(StorageService);
   private authService = inject(AuthService);
-  // private sidenavService = inject(SidenavService);
+  private sidenavService = inject(SidenavService);
   private router = inject(Router);
   
   company: Company | undefined;
@@ -53,7 +53,6 @@ export class HeaderComponent implements OnInit {
   favouritesProducts: string[] = [];
   showDropdownCart: boolean = false;
   showDropdownAccount: boolean = false;
-  toggleActive:boolean = false;
 
   searchword: string = '';
   
@@ -113,8 +112,7 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleRightSidenav() {
-		// this.toggleActive = !this.toggleActive;
-		// this.sidenavService.toggle();
+		this.sidenavService.toggle();
 	}
 
   searchItem() {

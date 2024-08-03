@@ -12,6 +12,9 @@
   --light-back: #eaeaea;
   --text-dark: theme(colors.dark);
   --text-white: theme(colors.white);
+  --grey: theme(colors.grey);
+  --mat-sidenav-content-background-color: rgb(255,255,255);
+  --mat-sidenav-container-background-color: rgb(255,255,255);
 }
 
 html, body { 
