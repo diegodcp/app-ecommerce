@@ -15,6 +15,12 @@
   --grey: theme(colors.grey);
   --mat-sidenav-content-background-color: rgb(255,255,255);
   --mat-sidenav-container-background-color: rgb(255,255,255);
+  --mdc-list-list-item-hover-state-layer-color: transparent;
+  --mdc-list-list-item-focus-state-layer-color: transparent;
+  --mat-icon-color: theme(colors.dark);
+  --mat-sidenav-content-text-color: theme(colors.dark);
+  --swiper-navigation-color: #b6b6b6;
+  --swiper-pagination-color: white;
 }
 
 html, body { 
@@ -58,3 +64,5 @@ body {
 .mat-badge-content, .mat-badge-medium .mat-badge-content {
   background: var(--primary);
 }
+
+/* MAT-SIDENAV */

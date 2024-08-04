@@ -1,1 +1,10 @@
-<p>home works!</p>
+<swiper-container class="" pagination="false" navigation="true" space-between="30"
+    centered-slides="true" autoplay-delay="2500" autoplay-disable-on-interaction="false">
+    @for(slide of companySlides; track slide.name) {
+    <swiper-slide class="md:max-h-96 lg:max-h-[40rem]">
+        <div class="imgContainer h-full">
+            <img width="600" height="400" class="h-full w-full" ngSrc="{{img_base_url}}{{slide.name}}" alt="{{slide.altText}}">
+        </div>
+    </swiper-slide>
+    }
+</swiper-container>

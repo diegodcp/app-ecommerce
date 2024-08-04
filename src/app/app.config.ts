@@ -12,6 +12,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { LanguageService } from './services/language.service';
 import { SidenavService } from './services/sidenav.service';
 
+import { register as registerSwiperElements } from 'swiper/element/bundle';
+
+registerSwiperElements();
+
 export function loadInitialConfig(initConfig: InitConfig) {
   return () => initConfig.load();
 }
