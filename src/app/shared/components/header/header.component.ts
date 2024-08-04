@@ -2,7 +2,7 @@ import { Component, inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Company, CompanyImage } from '../../models/company.interface';
 import { GlobalService } from '../../../services/global.service';
 import { environment } from '../../../../environments/environment';
-import { CurrencyPipe, isPlatformBrowser, NgOptimizedImage, provideCloudinaryLoader } from '@angular/common';
+import { CurrencyPipe, isPlatformBrowser, NgOptimizedImage } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MatSelectModule } from '@angular/material/select';
 import { StorageService } from '../../../services/storage.service';
@@ -25,9 +25,6 @@ import { FormsModule } from '@angular/forms';
     MatBadgeModule,
     CurrencyPipe,
     FormsModule
-  ],
-  providers: [
-    provideCloudinaryLoader(environment.CLOUDINARY_IMG_BASE)
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'

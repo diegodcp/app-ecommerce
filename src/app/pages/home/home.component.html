@@ -3,8 +3,23 @@
     @for(slide of companySlides; track slide.name) {
     <swiper-slide class="md:max-h-96 lg:max-h-[40rem]">
         <div class="imgContainer h-full">
-            <img width="600" height="400" class="h-full w-full" ngSrc="{{img_base_url}}{{slide.name}}" alt="{{slide.altText}}">
+            <img width="600" height="400" class="h-full w-full" ngSrc="{{slide.name}}" alt="{{slide.altText}}">
         </div>
     </swiper-slide>
     }
 </swiper-container>
+
+<div class="flex flex-col pt-10 pb-5 w-full justify-center">
+    <p class="cursive text-primary text-center text-4xl md:text-4xl">
+        {{company.name | uppercase}}
+    </p>
+    <p class="text-center mt-4 text-lg md:text-xl">
+        {{'HANDMADE_CHARM' | translate}}
+    </p>
+    </div>
+    <div class="flex justify-center p-2 my-4 px-5 bg-primary text-white">
+    <p class="!m-0 text-center">{{'DO_YOUR_ORDER_BY' | translate}} 
+        <strong><a href="{{ company.instagramUrl }}" target="_blank">Instragram</a></strong> {{'OR' | translate}} 
+        <strong><a href="https://api.whatsapp.com/send?phone={{companyPhoneFormatted}}&text=Hola," target="_blank">Whatsapp</a>!</strong>
+    </p>
+</div>
